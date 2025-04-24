@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Modal from './assets/Modal';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={() => setModalOpen(true)}>Åbn Modal</button>
+      <Modal
+        isOpen={modalOpen}
+        setIsOpen={setModalOpen}
+        backgroundColor="white"
+        fontColor="black"
+        width="500px"
+        height="400px"
+      >
+        <h2>Hej fra modalen!</h2>
+        <p>Her er noget indhold</p>
+        <p> pros </p>
+         <p>Bedre udvikleroplevelse: Autocomplete, dokumentation, og fejlmeddelelser i editoren.</p>
+         <p>Mere selvdokumenterende kode: Typer viser hvad funktionen forventer og returnerer.</p>
+         <p>Bedre samarbejde i teams: Mindre risiko for misforståelser.</p>
+         <p> cons </p>
+         <p>Mere kode: Du skal skrive flere linjer, især i starten.</p>
+         <p>Kræver tooling: Du skal sætte TypeScript og en compiler op.</p>
+         <p>Læringskurve: Især for nye udviklere kan typer virke forvirrende i starten.</p>
+      </Modal>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
